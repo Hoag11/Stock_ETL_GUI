@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>StockMn Dashboard</title>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+<header>
+    <div class="logo">📊 StockMn</div>
+    <nav id="navActions">
+        <a href="login.html" id="loginBtn">Login</a>
+        <a href="register.html" id="registerBtn">Register</a>
+    </nav>
+    <div class="user-menu" id="userMenu" style="display: none;">
+        <span id="userName">User</span>
+        <div class="dropdown">
+            <button id="profileBtn">👤</button>
+            <div class="dropdown-content">
+                <a href="#">Personal Info</a>
+                <a href="#">Settings</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="dashboard-container">
+        <iframe
+                title="Dashboard"
+                src="https://app.powerbi.com/reportEmbed?reportId=373d7a10-c74a-4b36-9c5d-24a6e297f769&autoAuth=true&ctid=e7572e92-7aee-4713-a3c4-ba64888ad45f"
+                allowFullScreen="true">
+        </iframe>
+    </div>
+</main>
+
+
+<div class="chat-toggle" id="chatToggle">💬</div>
+
+<div class="chat-popup" id="chatPopup">
+    <div class="chat-header">
+        <span>AI Assistant</span>
+        <button id="closeChat">❌</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <!-- Các tin nhắn AI/User sẽ được thêm vào đây -->
+    </div>
+    <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Nhập câu hỏi...">
+        <button id="sendChat">Gửi</button>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 StockMn | Empowered by Data
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
