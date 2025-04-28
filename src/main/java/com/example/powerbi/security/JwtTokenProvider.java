@@ -1,4 +1,4 @@
-package main.java.com.hoang.security;
+package com.example.powerbi.security;
 
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;

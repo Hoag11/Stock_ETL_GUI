@@ -1,4 +1,4 @@
-package main.java.com.hoang.model;
+package com.example.powerbi.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

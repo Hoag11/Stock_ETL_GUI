@@ -1,4 +1,4 @@
-package main.java.com.hoang.service;
+package com.example.powerbi.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

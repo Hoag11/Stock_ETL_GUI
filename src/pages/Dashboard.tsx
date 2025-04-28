@@ -1,25 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { PieChart, BarChart, TrendingUp, Users } from 'lucide-react';
-import axiosInstance from '../api/axiosInstance'; // import axiosInstance
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
-  const [reportUrl, setReportUrl] = useState<string>('');
-
-  useEffect(() => {
-    const fetchReportUrl = async () => {
-      try {
-        const response = await axiosInstance.get('/powerbi/url');
-        setReportUrl(response.data.url);
-      } catch (error) {
-        console.error('Failed to fetch Power BI report URL', error);
-      }
-    };
-
-    fetchReportUrl();
-  }, []);
-
+  
   return (
     <div className="animate-fade-in">
       <div className="mb-6">
@@ -28,7 +13,7 @@ const Dashboard: React.FC = () => {
           Welcome back, {user?.name}. Here's your business intelligence overview.
         </p>
       </div>
-
+      
       {/* Dashboard stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <DashboardStat 
@@ -60,7 +45,7 @@ const Dashboard: React.FC = () => {
           icon={<BarChart size={20} className="text-orange-500" />}
         />
       </div>
-
+      
       {/* Main dashboard content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
@@ -73,25 +58,14 @@ const Dashboard: React.FC = () => {
                 <option>Last 90 days</option>
               </select>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4 h-96 flex items-center justify-center border border-gray-200">
-              {reportUrl ? (
-                <iframe
-                  title="Power BI Report"
-                  width="100%"
-                  height="100%"
-                  src={reportUrl}
-                  frameBorder="0"
-                  allowFullScreen
-                  className="rounded-md shadow-md"
-                />
-              ) : (
-                <p className="text-gray-500">Loading report...</p>
-              )}
+            <div className="bg-gray-50 rounded-lg p-4 h-64 flex items-center justify-center border border-gray-200">
+              <p className="text-gray-500">
+                [Power BI Sales Overview Report Would Appear Here]
+              </p>
             </div>
           </div>
         </div>
-
-        {/* Top Products section giữ nguyên */}
+        
         <div>
           <div className="card h-full">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Top Products</h2>
@@ -109,8 +83,8 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Recent activity giữ nguyên */}
+      
+      {/* Recent activity */}
       <div className="mt-6">
         <div className="card">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
@@ -143,11 +117,11 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
 
+// Dashboard stat component
 interface DashboardStatProps {
   title: string;
   value: string;
@@ -156,7 +130,13 @@ interface DashboardStatProps {
   icon: React.ReactNode;
 }
 
-const DashboardStat: React.FC<DashboardStatProps> = ({ title, value, trend, trendType, icon }) => {
+const DashboardStat: React.FC<DashboardStatProps> = ({ 
+  title, 
+  value, 
+  trend, 
+  trendType,
+  icon
+}) => {
   return (
     <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
       <div className="flex justify-between">
@@ -169,13 +149,13 @@ const DashboardStat: React.FC<DashboardStatProps> = ({ title, value, trend, tren
         </div>
       </div>
       <div className="mt-2">
-        <span
+        <span 
           className={`text-xs font-medium ${
-            trendType === 'up'
-              ? 'text-green-600 bg-green-100'
-              : trendType === 'down'
-              ? 'text-red-600 bg-red-100'
-              : 'text-gray-600 bg-gray-100'
+            trendType === 'up' 
+              ? 'text-green-600 bg-green-100' 
+              : trendType === 'down' 
+                ? 'text-red-600 bg-red-100' 
+                : 'text-gray-600 bg-gray-100'
           } px-2 py-1 rounded-full`}
         >
           {trend}

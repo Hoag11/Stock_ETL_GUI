@@ -1,4 +1,4 @@
-package main.java.com.hoang;
+package com.example.powerbi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

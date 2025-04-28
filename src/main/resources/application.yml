@@ -1,0 +1,31 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:powerbidb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+jwt:
+  secret: your-secret-key-here-should-be-very-long-and-secure-in-production
+  expiration: 86400000 # 24 hours
+
+powerbi:
+  workspace-id: your-workspace-id
+  report-id: your-report-id
+  client-id: your-client-id
+  client-secret: your-client-secret
+  tenant-id: your-tenant-id

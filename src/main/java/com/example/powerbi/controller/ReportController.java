@@ -1,6 +1,6 @@
-package main.java.com.hoang.controller;
+package com.example.powerbi.controller;
 
-import main.java.com.hoang.service.PowerBIService;
+import com.example.powerbi.service.PowerBIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

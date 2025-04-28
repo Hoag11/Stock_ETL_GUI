@@ -1,6 +1,6 @@
-package main.java.com.hoang.repository;
+package com.example.powerbi.repository;
 
-import main.java.com.hoang.model.User;
+import com.example.powerbi.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

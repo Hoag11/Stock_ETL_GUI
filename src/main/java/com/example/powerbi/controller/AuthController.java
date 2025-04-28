@@ -1,8 +1,8 @@
-package main.java.com.hoang.controller;
+package com.example.powerbi.controller;
 
-import main.java.com.hoang.model.User;
-import main.java.com.hoang.repository.UserRepository;
-import main.java.com.hoang.security.JwtTokenProvider;
+import com.example.powerbi.model.User;
+import com.example.powerbi.repository.UserRepository;
+import com.example.powerbi.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
