@@ -1,34 +1,37 @@
 package com.hoang.powerbi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User {
+
+    public enum Role {
+        ADMIN,
+        USER,
+        ADVANCED_USER
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true, nullable = false)
     private String username;
+
+    @Column(unique = true, nullable = false)
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String role; // USER, ADVANCED_USER, ADMIN
-
-    // Có thể bổ sung thêm nếu bạn muốn
-    private String fullName;
-    private String phoneNumber;
+    private Role role;
 }

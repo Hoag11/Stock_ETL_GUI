@@ -1,21 +1,21 @@
 package com.hoang.powerbi.controller;
 
-import lombok.Data;
+import com.hoang.powerbi.model.ChatRequest;
+import com.hoang.powerbi.service.AIChatService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/chat")
+@RequestMapping("/api/ai")
 public class ChatAIController {
 
+    @Autowired
+    private AIChatService aiChatService;
 
-    @PostMapping
-    public String askAI(@RequestBody ChatRequest request) {
-        // Giả lập, thực tế bạn sẽ gửi request đến OpenAI, Gemini hoặc API nào bạn dùng.
-        return "You asked: " + request.getQuestion() + ". (Simulated AI response)";
-    }
-
-    @Data   
-    static class ChatRequest {
-        private String question;
+    @PostMapping("/chat")
+    @PreAuthorize("hasAnyRole('USER', 'ADVANCED_USER', 'ADMIN')")
+    public String chat(@RequestBody ChatRequest request) {
+        return aiChatService.chat(request.getMessage());
     }
 }

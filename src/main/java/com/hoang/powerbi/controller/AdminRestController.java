@@ -29,7 +29,11 @@ public class AdminRestController {
     public String updateUserRole(@PathVariable Long id, @RequestParam String role) {
         User user = userRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("User not found"));
-        user.setRole(role);
+        try {
+            user.setRole(User.Role.valueOf(role.toUpperCase()));
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid role: " + role);
+        }
         userRepository.save(user);
         return "Role Updated!";
     }

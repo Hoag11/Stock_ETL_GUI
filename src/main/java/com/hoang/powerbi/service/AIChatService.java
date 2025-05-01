@@ -1,39 +1,40 @@
 package com.hoang.powerbi.service;
 
-import java.net.URL;
-import java.net.HttpURLConnection;
+import com.hoang.powerbi.model.ChatHistory;
+import com.hoang.powerbi.model.User;
+import com.hoang.powerbi.repository.ChatHistoryRepository;
+import com.hoang.powerbi.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import java.io.*;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class AIChatService {
 
+    @Autowired
+    private ChatHistoryRepository chatHistoryRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    private final RestTemplate restTemplate = new RestTemplate();
+
     public String chat(String message) {
-        try {
-            URL url = new URL("http://localhost:11434/api/generate"); // Ollama default
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
+        String url = "http://localhost:11434/api/generate";
+        String requestJson = "{\"model\":\"mistral\", \"prompt\":\"" + message + "\"}";
+        String response = restTemplate.postForObject(url, requestJson, String.class);
 
-            String jsonInput = "{\"model\":\"mistral\",\"prompt\":\"" + message + "\"}";
-            try (OutputStream os = conn.getOutputStream()) {
-                byte[] input = jsonInput.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
+        // Save to history
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username).orElseThrow();
+        ChatHistory history = new ChatHistory();
+        history.setUser(user);
+        history.setMessage(message);
+        history.setResponse(response);
+        chatHistoryRepository.save(history);
 
-            StringBuilder response = new StringBuilder();
-            try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    response.append(line);
-                }
-            }
-
-            return response.toString();
-        } catch (Exception e) {
-            return "Error calling local AI: " + e.getMessage();
-        }
+        return response;
     }
 }
 
