@@ -1,0 +1,40 @@
+📁 com/hoang/powerbi/
+
+├── Application.java
+│   └── (Spring Boot main class)
+
+├── controller/
+│   ├── AuthenticationController.java
+│   │   ├── POST /api/auth/login – Đăng nhập
+│   │   └── POST /api/auth/register – Đăng ký tài khoản
+│   ├── UserRestController.java
+│   │   ├── GET /api/user/me – Lấy thông tin người dùng hiện tại
+│   │   └── PUT /api/user/update – Cập nhật hồ sơ cá nhân
+│   ├── AdvancedUserController.java
+│   │   └── POST /api/advanced/upgrade – Nâng cấp tài khoản lên Advanced User
+│   ├── AdminRestController.java
+│   │   ├── GET /api/admin/users – Lấy danh sách người dùng
+│   │   ├── DELETE /api/admin/user/{id} – Xoá người dùng
+│   │   └── POST /api/admin/user/{id}/role?role=ADMIN – Cập nhật vai trò
+│   ├── ChatAIController.java
+│   │   └── POST /api/ai/chat – Gửi câu hỏi tới AI và nhận phản hồi
+
+├── model/
+│   ├── User.java – Entity người dùng (id, username, email, password, role)
+│   └── ChatRequest.java – DTO cho API AI chat
+
+├── repository/
+│   └── UserRepository.java
+│       ├── findByUsername(String)
+│       └── findByEmail(String)
+
+├── security/
+│   └── SecurityConfig.java – Cấu hình bảo mật (phân quyền, login, route...)
+
+├── service/
+│   ├── UserService.java – Xử lý logic người dùng (đăng ký, cập nhật, nâng cấp)
+│   ├── CustomUserDetailsService.java – Tích hợp bảo mật Spring Security
+│   └── AIChatService.java – Gửi request đến mô hình AI (local API)
+
+├── exception/
+│   └── GlobalExceptionHandler.java – Bắt và xử lý lỗi chung cho toàn hệ thống
