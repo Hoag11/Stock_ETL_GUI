@@ -2,10 +2,11 @@ CREATE DATABASE IF NOT EXISTS powerbiweb;
 USE powerbiweb;
 
 CREATE TABLE users (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(100) NOT NULL,
-    role VARCHAR(20) NOT NULL
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL, 
+    role VARCHAR(20) NOT NULL,
+    email VARCHAR(255) 
 );
 
 CREATE TABLE chat_requests (
