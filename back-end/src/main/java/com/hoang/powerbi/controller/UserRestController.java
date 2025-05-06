@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserRestController {
 
@@ -25,7 +25,7 @@ public class UserRestController {
         return "Upgrade to Advanced Successful!";
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/me")
     public User getProfile(@AuthenticationPrincipal UserDetails userDetails) {
         return userService.findByUsername(userDetails.getUsername())
             .orElseThrow(() -> new RuntimeException("User not found"));
