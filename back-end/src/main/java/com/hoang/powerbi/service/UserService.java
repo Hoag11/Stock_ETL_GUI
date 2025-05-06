@@ -36,7 +36,7 @@ public class UserService {
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-
+    
     public void upgradeToAdvancedUser(String username) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -86,4 +86,6 @@ public class UserService {
         }
         userRepository.deleteById(id);
     }
+
+
 }
