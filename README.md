@@ -7,7 +7,7 @@ Make sure you have the following installed before you begin:
 
 - [Node.js](https://nodejs.org/) (for the frontend)
 - [Maven](https://maven.apache.org/) (for the backend)
-- [Astro](https://astro.build/) (for running the Astro-based frontend)
+- [Astronomer]([https://astro.build/](https://www.astronomer.io/docs/astro/cli/overview)) (for running the Pipeline)
 
 ## Getting Started
 
