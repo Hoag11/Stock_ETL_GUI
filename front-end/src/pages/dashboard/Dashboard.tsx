@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Calendar, TrendingUp, Users, Zap, RefreshCw } from 'lucide-react';
+import { ArrowRight, Calendar, TrendingUp, Users, Zap, RefreshCw, MessageSquare, ExternalLink, Bell } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const Dashboard: React.FC = () => {
@@ -67,6 +67,31 @@ const Dashboard: React.FC = () => {
         )}
       </div>
       
+      {/* Telegram Link Card */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 border-l-4 border-blue-500">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <div className="bg-blue-100 dark:bg-blue-900 p-2 rounded-full mr-4">
+              <MessageSquare className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            </div>
+            <div>
+              <h3 className="font-medium text-gray-900 dark:text-white">Báo giá hàng ngày</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Tham gia nhóm Telegram để nhận báo giá HPG, VNM, FPT hàng ngày
+              </p>
+            </div>
+          </div>
+          <a 
+            href="https://t.me/+_EnUuDnldM00ZGU9" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium flex items-center transition-colors"
+          >
+            Tham gia <ExternalLink className="ml-1 h-4 w-4" />
+          </a>
+        </div>
+      </div>
+      
       {/* PowerBI Dashboard */}
       <div className="w-full bg-white dark:bg-gray-800 rounded-lg shadow">
         {isLoading && (
@@ -76,7 +101,7 @@ const Dashboard: React.FC = () => {
           </div>
         )}
         
-        <div className="w-full" style={{ height: 'calc(100vh - 220px)', minHeight: '541px' }}>
+        <div className="w-full" style={{ height: 'calc(100vh - 280px)', minHeight: '541px' }}>
           <iframe 
             title={isAdvancedUser ? "Advanced Dashboard" : "Basic Dashboard"}
             width="100%" 
@@ -109,6 +134,75 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
       
+      {/* Market Updates Section */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="font-medium text-gray-900 dark:text-white flex items-center">
+              <span className="inline-block h-3 w-3 rounded-full bg-green-500 mr-2"></span>
+              HPG
+            </h3>
+            <span className="text-green-600 dark:text-green-400 text-sm font-medium">+2.4%</span>
+          </div>
+          <p className="text-2xl font-bold mb-1 text-gray-900 dark:text-white">28,250</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            Cập nhật từ nhóm Telegram
+            <a 
+              href="https://t.me/+_EnUuDnldM00ZGU9" 
+              className="text-blue-600 hover:underline ml-1 inline-flex items-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Xem thêm <ExternalLink className="h-3 w-3 ml-1" />
+            </a>
+          </p>
+        </div>
+      
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="font-medium text-gray-900 dark:text-white flex items-center">
+              <span className="inline-block h-3 w-3 rounded-full bg-red-500 mr-2"></span>
+              VNM
+            </h3>
+            <span className="text-red-600 dark:text-red-400 text-sm font-medium">-0.6%</span>
+          </div>
+          <p className="text-2xl font-bold mb-1 text-gray-900 dark:text-white">69,300</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            Cập nhật từ nhóm Telegram
+            <a 
+              href="https://t.me/+_EnUuDnldM00ZGU9" 
+              className="text-blue-600 hover:underline ml-1 inline-flex items-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Xem thêm <ExternalLink className="h-3 w-3 ml-1" />
+            </a>
+          </p>
+        </div>
+      
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="font-medium text-gray-900 dark:text-white flex items-center">
+              <span className="inline-block h-3 w-3 rounded-full bg-green-500 mr-2"></span>
+              FPT
+            </h3>
+            <span className="text-green-600 dark:text-green-400 text-sm font-medium">+1.8%</span>
+          </div>
+          <p className="text-2xl font-bold mb-1 text-gray-900 dark:text-white">112,500</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            Cập nhật từ nhóm Telegram
+            <a 
+              href="https://t.me/+_EnUuDnldM00ZGU9" 
+              className="text-blue-600 hover:underline ml-1 inline-flex items-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Xem thêm <ExternalLink className="h-3 w-3 ml-1" />
+            </a>
+          </p>
+        </div>
+      </div>
+      
       {/* Dashboard Tips */}
       <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
         <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-2">Dashboard Tips:</h3>
@@ -116,6 +210,7 @@ const Dashboard: React.FC = () => {
           <li>Click on any chart to filter the other visualizations</li>
           <li>Use the top filters for different data views</li>
           <li>Press ESC to reset all filters</li>
+          <li>Theo dõi <a href="https://t.me/+_EnUuDnldM00ZGU9" target="_blank" rel="noopener noreferrer" className="font-medium underline">nhóm Telegram</a> để nhận thông tin cập nhật giá HPG, VNM, FPT</li>
           {isAdvancedUser && (
             <li>Export data and reports using the options in each visualization</li>
           )}
