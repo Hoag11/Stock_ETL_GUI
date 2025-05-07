@@ -32,5 +32,4 @@ cd back-end
 mvn spring-boot:run
 ```
 
-### Notes: When run the first time, uncomment `#spring.profiles.active=dev` on /back-end/src/main/resources/application.properties and start backend to have sample data, 
-## then you can comment it again 
+### Notes: When run the first time, uncomment `#spring.profiles.active=dev` on /back-end/src/main/resources/application.properties and start backend to have sample data, then you can comment it again 
