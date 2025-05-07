@@ -1,7 +1,7 @@
 import { apiClient } from './apiClient';
 
 interface ChatRequest {
-  question: string;
+  message: string;  
 }
 
 interface ChatResponse {
@@ -11,7 +11,7 @@ interface ChatResponse {
 
 export const aiService = {
   async sendChatRequest(question: string): Promise<ChatResponse> {
-    const response = await apiClient.post('/api/ai/chat', { question });
+    const response = await apiClient.post('/api/ai/chat', { message: question });
     return response.data;
   }
 };
