@@ -3,12 +3,14 @@ package com.hoang.powerbi.controller;
 import com.hoang.powerbi.model.User;
 import com.hoang.powerbi.service.UserService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserRestController {
 
@@ -25,6 +27,7 @@ public class UserRestController {
         return "Upgrade to Advanced Successful!";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER') or hasAuthority('ADVANCED_USER')")
     @GetMapping("/me")
     public User getProfile(@AuthenticationPrincipal UserDetails userDetails) {
         return userService.findByUsername(userDetails.getUsername())

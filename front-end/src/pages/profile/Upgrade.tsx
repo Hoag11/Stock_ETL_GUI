@@ -121,9 +121,9 @@ const Upgrade: React.FC = () => {
             
             <button
               onClick={handleUpgrade}
-              disabled={loading || user?.role === 'ADVANCED' || user?.role === 'ADMIN'}
+              disabled={loading || user?.role === 'ADVANCED_USER' || user?.role === 'ADMIN'}
               className={`w-full py-2 px-4 rounded-md bg-white text-blue-700 hover:bg-blue-50 transition-colors duration-200 flex items-center justify-center ${
-                loading || user?.role === 'ADVANCED' || user?.role === 'ADMIN' 
+                loading || user?.role === 'ADVANCED_USER' || user?.role === 'ADMIN' 
                   ? 'opacity-50 cursor-not-allowed' 
                   : ''
               }`}
@@ -133,7 +133,7 @@ const Upgrade: React.FC = () => {
                   <Loader2 className="animate-spin h-4 w-4 mr-2" />
                   Processing...
                 </span>
-              ) : user?.role === 'ADVANCED' || user?.role === 'ADMIN' ? (
+              ) : user?.role === 'ADVANCED_USER' || user?.role === 'ADMIN' ? (
                 'Current Plan'
               ) : (
                 <span className="flex items-center">

@@ -17,7 +17,7 @@ const AIChat: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
   
-  const isAdvancedUser = user?.role === 'ADVANCED' || user?.role === 'ADMIN';
+  const isAdvancedUser = user?.role === 'ADVANCED_USER' || user?.role === 'ADMIN';
 
   // Scroll to bottom when messages change
   useEffect(() => {

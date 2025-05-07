@@ -7,9 +7,14 @@ interface User {
   role: string;
 }
 
+const token = localStorage.getItem('token');
+
 export const userService = {
   async getCurrentUser(): Promise<User> {
-    const response = await apiClient.get('/api/user/me');
+    const response = await apiClient.get('/api/user/me', {
+      headers: {
+        Authorization: `Bearer ${token}`}
+    });
     return response.data;
   },
 

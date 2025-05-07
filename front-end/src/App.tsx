@@ -48,7 +48,7 @@ function App() {
           element={
             isAuthenticated && user?.role === 'ADMIN' 
               ? <AdminPanel /> 
-              : <Navigate to="/dashboard" />
+              : <Navigate to="/login" />
           } 
         />
       </Route>

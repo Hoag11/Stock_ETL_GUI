@@ -96,7 +96,7 @@ const DashboardLayout: React.FC = () => {
                 <User size={20} />
                 <span>Profile</span>
               </NavLink>
-              {user?.role !== 'ADVANCED' && (
+              {user?.role !== 'ADVANCED_USER' && (
                 <NavLink 
                   to="/upgrade" 
                   className={navLinkClass}
@@ -107,15 +107,15 @@ const DashboardLayout: React.FC = () => {
                 </NavLink>
               )}
               {user?.role === 'ADMIN' && (
-                <NavLink 
-                  to="/admin" 
-                  className={navLinkClass}
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  <ShieldCheck size={20} />
-                  <span>Admin Panel</span>
-                </NavLink>
-              )}
+              <NavLink 
+                to="/admin" 
+                className={navLinkClass}
+                onClick={() => setSidebarOpen(false)}
+              >
+                <ShieldCheck size={20} />
+                <span>Admin Panel</span>
+              </NavLink>
+            )}
             </div>
             <div className="px-3 py-4 border-t border-gray-200 dark:border-gray-700">
               <button

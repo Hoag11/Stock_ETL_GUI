@@ -19,6 +19,7 @@
 /home/hoang/PycharmProjects/monthaykhanh/back-end/src/main/java/com/hoang/powerbi/controller/AdvancedUserController.java
 /home/hoang/PycharmProjects/monthaykhanh/back-end/src/main/java/com/hoang/powerbi/model/ChatHistory.java
 /home/hoang/PycharmProjects/monthaykhanh/back-end/src/main/java/com/hoang/powerbi/controller/ChatAIController.java
+/home/hoang/PycharmProjects/monthaykhanh/back-end/src/main/java/com/hoang/powerbi/security/JwtAuthenticationFilter.java
 /home/hoang/PycharmProjects/monthaykhanh/back-end/src/main/java/com/hoang/powerbi/dto/RegisterRequest.java
 /home/hoang/PycharmProjects/monthaykhanh/back-end/src/main/java/com/hoang/powerbi/service/CustomUserDetailsService.java
 /home/hoang/PycharmProjects/monthaykhanh/back-end/src/main/java/com/hoang/powerbi/controller/AuthenticationController.java
