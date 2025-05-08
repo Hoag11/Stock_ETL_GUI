@@ -1,4 +1,4 @@
-DROP DATABASE IF NOT EXISTS powerbiweb;
+DROP DATABASE IF EXISTS powerbiweb;
 CREATE DATABASE powerbiweb;
 USE powerbiweb;
 
