@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS powerbiweb;
+DROP DATABASE IF NOT EXISTS powerbiweb;
+CREATE DATABASE powerbiweb;
 USE powerbiweb;
 
 CREATE TABLE users (
