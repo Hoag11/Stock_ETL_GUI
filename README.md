@@ -24,7 +24,7 @@ astro dev start
 ```bash
 git clone https://github.com/Hoag11/monthaykhanh
 cd front-end
-npm dev run
+npm run dev
 ```
 Open another terminal
 ```bash
