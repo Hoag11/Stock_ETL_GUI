@@ -14,8 +14,8 @@ const Dashboard: React.FC = () => {
   const isAdmin = user?.role === 'ADMIN';
 
   // PowerBI dashboard URLs based on user role
-  const basicDashboardUrl = "https://app.powerbi.com/reportEmbed?reportId=373d7a10-c74a-4b36-9c5d-24a6e297f769&autoAuth=true&ctid=e7572e92-7aee-4713-a3c4-ba64888ad45f";
-  const advancedDashboardUrl = "https://app.powerbi.com/reportEmbed?reportId=ba8fb23e-4ea7-45bc-b3b5-98e04c9fe03c&autoAuth=true&ctid=e7572e92-7aee-4713-a3c4-ba64888ad45f";
+  const basicDashboardUrl = "https://app.powerbi.com/reportEmbed?reportId=a3af0523-3d68-42c6-a61b-e2ffbb8f6421&autoAuth=true&ctid=e7572e92-7aee-4713-a3c4-ba64888ad45f";
+  const advancedDashboardUrl = "https://app.powerbi.com/reportEmbed?reportId=396b737c-4a8e-4110-bbc0-138374db891c&autoAuth=true&ctid=e7572e92-7aee-4713-a3c4-ba64888ad45f";
 
   // Get current dashboard URL based on user role or admin view selection
   const getDashboardUrl = () => {
